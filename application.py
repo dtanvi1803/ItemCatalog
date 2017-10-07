@@ -1,15 +1,15 @@
 from models import Base, User, Category, Item
 
-from flask import Flask, render_template, redirect, url_for, jsonify, \
+from Flask import Flask, render_template, redirect, url_for, jsonify, \
      request, url_for, abort, g, flash
 
-from sqlalchemy.ext.declarative import declarative_base
+from SQLAlchemy.ext.declarative import declarative_base
 
-from sqlalchemy.orm import relationship, sessionmaker
+from SQLAlchemy.orm import relationship, sessionmaker
 
-from sqlalchemy import create_engine
+from SQLAlchemy import create_engine
 
-from flask import session as login_session
+from Flask import session as login_session
 
 import json
 
@@ -17,7 +17,7 @@ import random
 
 import string
 
-from flask.ext.httpauth import HTTPBasicAuth
+from Flask.ext.httpauth import HTTPBasicAuth
 
 from oauth2client.client import flow_from_clientsecrets
 
@@ -25,9 +25,10 @@ from oauth2client.client import FlowExchangeError
 
 import httplib2
 
-from flask import make_response
+from Flask import make_response
 
 import requests
+
 
 auth = HTTPBasicAuth()
 
