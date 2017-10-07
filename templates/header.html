@@ -1,0 +1,19 @@
+<div class="row top-menu">
+<div class="banner">
+		{%if 'username' in session %}
+		<div class="main profile">Hi {{session['username']}} !!</div>
+		{% endif %}
+</div>
+
+<div class="col-md-6 banner ">
+
+	<a href="{{url_for('catalog')}}">
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Catalog
+	</a>
+
+	<a href="{{url_for('catalogJSON')}}">
+		<span class="glyphicon glyphicon-download" aria-hidden="true"></span>JSON Catalog
+	</a>
+
+</div>
+</div>

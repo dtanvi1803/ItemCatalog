@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html" %}
+	<h3>Categories</h3>
+	<form action="{{url_for('items',catid = category.id)}}" method = 'get'>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="catalog-list">
+					<ul>
+					{% for cats in categories %}
+					<li>
+						<a href ="{{url_for('items',catid=cats.id)}}" class="hover" > {{cats.name}} </a>
+					</li>
+					
+					{% endfor %}
+					</ul>
+				</form>				
+			</div>
+		</div>
+		<div class="col-md-6">
+			<h4>{{category.name}} Items ({{catItemsCount}} Items)</h4>
+			<div class="category-list">
+					<div class = 'pane'>
+					<!--MESSAGE FLASHING -->
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					<ul>
+					{% for message in messages %}
+					  <li><strong>{{message}}</strong></li>
+					  {% endfor %}
+					</ul>
+					{% endif %}
+					{% endwith %}
+					
+					<ul>
+					{% for i in items %}
+
+							<li>
+								{%if 'username' in session %}
+										<a href ="{{url_for('viewItem',catid= category.id, itemid =i.id)}}"> {{i.title}} </a>
+								{% else %}
+									{{i.title}}
+								{% endif %}
+
+							<br/>
+							</li>
+
+					{% endfor %}
+					</ul>
+				{%if 'username' not in session %}
+				{% else %}
+					<a href ="{{url_for('newItem',catid=category.id)}}">New Item </a> <br/>
+					<a href ="{{url_for('itemsJSON',catid=category.id)}}" class="hover" > {{category.name}} JSON </a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	</form>	
+
+{% endblock %}

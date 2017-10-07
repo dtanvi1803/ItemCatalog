@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+		</div>
+		<form action="{{url_for('catalog')}}" method = 'get'>	
+			<div class="row">
+				<div class="col-md-6">
+				<div class="banner menu">
+						<h4>Categories</h4>
+				</div>
+
+				<div class="catalog-list">
+					<!--MESSAGE FLASHING -->
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					<ul>
+					{% for message in messages %}
+					  <li><strong>{{message}}</strong></li>
+					  {% endfor %}
+					</ul>
+					{% endif %}
+					{% endwith %}
+
+					<ul>
+					{% for cat in category %}
+
+					<li>
+						<a href ="{{url_for('items',catid=cat.id)}}" class="hover" > {{cat.name}} </a>
+					</li>
+					
+					{% endfor %}
+					</ul>
+
+					{%if 'username' not in session %}
+					{% else %}
+						<a href ="{{url_for('newCategory')}}" >New Category </a>
+						
+					{% endif %}
+
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="banner menu">
+						<h4>Latest Items</h4>
+				</div>
+				<div class="catalog-list">
+						<ul>
+						{% for i in latitems %}
+							<li><a href ="{{url_for('items',catid = i[1])}}" class="hover" > {{i.name}} </a> /
+							 <a href ="{{url_for('viewItem',catid = i[1],itemid=i[3])}}" class="item hover"> {{i.title}} </a></li>
+						{% endfor %}
+						</ul>
+				</div>
+			</div>
+		</div>
+	</form>	
+{% endblock %}
