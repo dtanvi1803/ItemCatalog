@@ -1,17 +1,16 @@
-from sqlalchemy import Column,ForeignKey,Integer,String
+from SQLAlchemy import Column,ForeignKey,Integer,String
 
-from sqlalchemy.ext.declarative import declarative_base
+from SQLAlchemy.ext.declarative import declarative_base
 
-from sqlalchemy.orm import relationship, sessionmaker
+from SQLAlchemy.orm import relationship, sessionmaker
 
-from sqlalchemy import create_engine
+from SQLAlchemy import create_engine
 
 from passlib.apps import custom_app_context as pwd_context
 
 import random, string
 
 from itsdangerous import(TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
-
 
 
 Base = declarative_base()
