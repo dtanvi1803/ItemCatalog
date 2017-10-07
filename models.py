@@ -1,10 +1,10 @@
-from SQLAlchemy import Column,ForeignKey,Integer,String
+from sqlalchemy import Column,ForeignKey,Integer,String
 
-from SQLAlchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 
-from SQLAlchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import relationship, sessionmaker
 
-from SQLAlchemy import create_engine
+from sqlalchemy import create_engine
 
 from passlib.apps import custom_app_context as pwd_context
 
